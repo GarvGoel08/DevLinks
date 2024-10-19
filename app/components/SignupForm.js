@@ -16,8 +16,8 @@ export default function Form() {
   }, [router]);
   const [name, setName] = useState("Garv Goel");
   const [email, setEmail] = useState("test1@gmail.com");
-  const [password, setPassword] = useState("bcss1972");
-  const [confirmPassword, setConfirmPassword] = useState("bcss1972");
+  const [password, setPassword] = useState("test1234");
+  const [confirmPassword, setConfirmPassword] = useState("test1234");
 
   const signUp = async () => {
     console.log(name, email, password, confirmPassword);
