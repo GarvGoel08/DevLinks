@@ -1,8 +1,8 @@
 import Image from "next/image";
-import NavBar from "./components/NavBar";
-import Form from "./components/SignupForm";
+import NavBar from "../components/NavBar";
+import Form from "../components/LoginForm";
 
-export default function Home() {
+export default function Login() {
   return (
     <div className="flex bg-[#FAFAFA] flex-col items-center min-h-screen">
       <NavBar />
