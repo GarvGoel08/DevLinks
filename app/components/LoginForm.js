@@ -58,7 +58,7 @@ export default function Form() {
     <div className="grow flex items-center justify-center">
       <div className="bg-white flex flex-col my-10 mx-2 text-black p-6 py-8 rounded-lg overflow-x-hidden  min-w-[490px] max-sm:min-w-0 max-sm:w-full">
         <div className="font-semibold text-center text-2xl mb-4">
-          Login to Capt.io
+          Login to DevLinks
         </div>
         <div className="flex flex-col text-sm gap-4 mt-4">
           <div className="flex flex-col gap-1">
