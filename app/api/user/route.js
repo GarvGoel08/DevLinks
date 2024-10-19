@@ -3,6 +3,7 @@ import catchAsync from "@/middleware/catchAsync";
 import User from "@/models/users";
 import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
+const { sign } = require("jsonwebtoken");
 
 await dbConnect();
 

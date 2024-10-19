@@ -11,6 +11,7 @@ import { CheckIcon, ChevronDownIcon } from "@heroicons/react/solid";
 import { LinkIcon } from "@heroicons/react/outline";
 import dragAndDrop from "../images/icon-drag-and-drop.svg";
 import Image from "next/image";
+import imgEpty from "../images/illustration-empty.svg";
 
 import {
   DndContext,
@@ -64,7 +65,6 @@ const platforms = [
     icon: <Image src={FaceBookImage} alt="GitHub" height={16} width={16} />,
   },
 ];
-
 const DraggableItem = ({ link, index, removeLink, updateLink }) => {
   const { attributes, listeners, setNodeRef, transform, transition } =
     useSortable({ id: link.id });
@@ -89,7 +89,7 @@ const DraggableItem = ({ link, index, removeLink, updateLink }) => {
         </div>
         <button
           onClick={() => removeLink(link.id)}
-          className="text-gray-500 hover:text-red-500  max-md:text-[14px]"
+          className="text-gray-500 hover:text-red-500 max-md:text-[14px]"
         >
           Remove
         </button>
@@ -140,13 +140,22 @@ const DraggableItem = ({ link, index, removeLink, updateLink }) => {
         <span className="absolute inset-y-0 left-3 flex items-center text-gray-500">
           <LinkIcon className="w-5 h-5" />
         </span>
-        <input
-          type="text"
-          placeholder={`e.g. ${link.platform.url}yourprofile`}
-          value={link.url}
-          onChange={(e) => updateLink(link.id, "url", e.target.value)}
-          className="w-full pl-10 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400 hover:ring-2 hover:ring-indigo-300 text-gray-700"
-        />
+        <div className={`flex flex-row max-sm:flex-wrap items-center bg-white rounded-xl ${
+              link.error ? "border-red-500 border-2" : ""
+            }`}>
+          <input
+            type="text"
+            placeholder={`e.g. ${link.platform.url}yourprofile`}
+            value={link.url}
+            onChange={(e) => updateLink(link.id, "url", e.target.value)}
+            className={`w-full pl-10 py-2 border rounded-lg focus:outline-none text-gray-700 ${
+              link.error ? "border-none" : "border-gray-300 focus:ring-indigo-400 hover:ring-2 hover:ring-indigo-300  focus:ring-2"
+            } `}
+          />
+          {link.error && (
+            <span className="text-red-500 text-sm text-nowrap mr-3 max-sm:hidden">{link.error}</span>
+          )}
+        </div>
       </div>
     </div>
   );
@@ -182,8 +191,10 @@ export default function LinksManager() {
           const fetchedLinks = fetchedData.Links;
 
           // Map the fetched links to include platform info
-          const updatedLinks = fetchedLinks.map(link => {
-            const platform = platforms.find(p => p.name === link.platform.name);
+          const updatedLinks = fetchedLinks.map((link) => {
+            const platform = platforms.find(
+              (p) => p.name === link.platform.name
+            );
             return {
               ...link,
               id: crypto.randomUUID(),
@@ -244,12 +255,20 @@ export default function LinksManager() {
   };
 
   const updateLinks = async () => {
-    const invalidLinks = links.filter((link) => !isValidLink(link));
+    let hasErrors = false;
+    const updatedLinks = links.map((link) => {
+      if (!isValidLink(link)) {
+        hasErrors = true;
+        return {
+          ...link,
+          error: "Invalid link format. Please check your URL.",
+        };
+      }
+      return { ...link, error: null }; // Reset error if valid
+    });
 
-    if (invalidLinks.length > 0) {
-      alert("Please ensure all links are in the correct format.");
-      return;
-    }
+    setLinks(updatedLinks);
+    if (hasErrors) return;
     try {
       const response = await fetch("/api/user/links", {
         method: "POST",
@@ -334,8 +353,9 @@ export default function LinksManager() {
                         height="16"
                         fill="none"
                         viewBox="0 0 16 16"
-                        x="210"t
-                        y="14" 
+                        x="210"
+                        t
+                        y="14"
                       >
                         <path
                           fill="#fff"
@@ -371,7 +391,7 @@ export default function LinksManager() {
         </div>
         <div className="flex-grow rounded-xl bg-white">
           <div className="p-8 py-12 flex flex-col justify-between h-full bg-white rounded-lg">
-            <div>
+            <div className="flex flex-col grow">
               <h2 className="text-[32px] max-sm:text-[24px] font-semibold text-[#333333]">
                 Customize your links
               </h2>
@@ -395,6 +415,25 @@ export default function LinksManager() {
                   items={links.map((link) => link.id)}
                   strategy={verticalListSortingStrategy}
                 >
+                  {links.length === 0 && (
+                    <div className="flex rounded-xl py-8 px-20 max-md:px-8 flex-col bg-[#FAFAFA] items-center justify-center grow mt-6">
+                      <Image
+                        src={imgEpty}
+                        alt="No links"
+                        width={200}
+                        height={200}
+                      />
+                      <p className="text-[#333333] text-2xl font-bold mt-4">
+                        Let’s get you started
+                      </p>
+                      <p className="text-[#737373] text-base mt-6">
+                        Use the “Add new link” button to get started. Once you
+                        have more than one link, you can reorder and edit them.
+                        We’re here to help you share your profiles with
+                        everyone!
+                      </p>
+                    </div>
+                  )}
                   {links.map((link, index) => (
                     <DraggableItem
                       key={link.id}

@@ -31,7 +31,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${InstrumentalSans.variable} ${InstrumentalSansItalic.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${InstrumentalSans.variable} ${InstrumentalSansItalic.variable} antialiased ` }
       >
         {children}
       </body>
