@@ -33,7 +33,9 @@ import GithubImage from "../images/icon-github.svg";
 import YoutubImage from "../images/icon-youtube.svg";
 import FaceBookImage from "../images/icon-facebook.svg";
 import LinkedinImage from "../images/icon-linkedin.svg";
+import twitterImage from "../images/icon-twitter.svg";
 import { useRouter } from "next/navigation";
+import gitLabImage from '../images/icon-gitlab.svg';
 
 const platforms = [
   {
@@ -60,10 +62,24 @@ const platforms = [
   {
     id: 4,
     name: "Facebook",
-    url: "https://www.x.com/",
+    url: "https://www.facebook.com/",
     color: "#1877F2",
     icon: <Image src={FaceBookImage} alt="GitHub" height={16} width={16} />,
   },
+  {
+    id: 5,
+    name: "Twitter",
+    url: "https://www.x.com/",
+    color: "#1877F2",
+    icon: <Image src={twitterImage} alt="GitHub" height={16} width={16} />,
+  },
+  {
+    id: 6,
+    name: "GitLab",
+    url: "https://www.gitlab.com/",
+    color: "#fca326",
+    icon: <Image src={gitLabImage} alt="GitHub" height={16} width={16} />,
+  }
 ];
 const DraggableItem = ({ link, index, removeLink, updateLink }) => {
   const { attributes, listeners, setNodeRef, transform, transition } =
