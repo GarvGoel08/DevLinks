@@ -54,8 +54,9 @@ export default function Form() {
       router.push("/links");
     } else {
       const data = await res.json();
+      console.log(data);
       alert(
-        data.error ||
+        data.message ||
           "An error occurred. Please try again later or contact support"
       );
     }

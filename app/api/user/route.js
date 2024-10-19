@@ -34,7 +34,7 @@ export const PUT = catchAsync(async (req, context) => {
     code,
   });
 
-  const token = sign({ id: existing._id }, process.env.JWT_SECRET, {
+  const token = sign({ id: newUser._id }, process.env.JWT_SECRET, {
     expiresIn: "7d",
   });
 
