@@ -1,36 +1,31 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# DevLinks
+
+DevLinks is a web application designed to help developers manage and share their links and profiles. Built with Next.js, MongoDB, and styled with Tailwind CSS, it provides a seamless user experience with authentication, link management, and secure storage.
+
+## Features
+
+- **User Authentication**: Secure user authentication using JWT tokens for session management.
+- **User Profiles**: Create and manage user profiles with personal information and links.
+- **Link Management**: Add, edit, and delete links to easily share your resources.
+- **Secure Password Storage**: User passwords are securely hashed using bcrypt.
+- **Image Storage**: Utilize Firebase for storing and retrieving profile images and other media.
+- **Responsive Design**: Fully responsive UI built with Tailwind CSS for a great user experience on all devices.
+
+## Technologies Used
+
+- **Next.js**: A React framework for building server-side rendered applications.
+- **MongoDB**: A NoSQL database for storing user data and links.
+- **Tailwind CSS**: A utility-first CSS framework for building custom designs.
+- **JWT Tokens**: For secure user authentication and authorization.
+- **bcrypt**: For hashing passwords before storing them in the database.
+- **Firebase**: For cloud storage of images and other files.
 
 ## Getting Started
 
-First, run the development server:
+To get a local copy of the project up and running, follow these steps:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Prerequisites
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Node.js (v14 or later)
+- MongoDB
+- Firebase account
