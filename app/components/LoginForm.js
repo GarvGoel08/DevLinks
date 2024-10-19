@@ -49,7 +49,7 @@ export default function Form() {
       const data = await res.json();
       console.log(data);
       alert(
-        res.statusText ||
+        res.data.message ||
           "An error occurred. Please try again later or contact support"
       );
     }
