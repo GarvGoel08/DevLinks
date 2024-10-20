@@ -6,6 +6,9 @@ import YoutubImage from "../../images/icon-youtube.svg";
 import FaceBookImage from "../../images/icon-facebook.svg";
 import LinkedinImage from "../../images/icon-linkedin.svg";
 import Image from "next/image";
+import twitterImage from "../images/icon-twitter.svg";
+import gitLabImage from '../images/icon-gitlab.svg';
+import twitchImage from '../images/icon-twitch.svg';
 
 const CardPage = () => {
   const platforms = [
@@ -21,22 +24,43 @@ const CardPage = () => {
       name: "YouTube",
       url: "https://www.youtube.com/",
       color: "red",
-      icon: <Image src={YoutubImage} alt="GitHub" height={16} width={16} />,
+      icon: <Image src={YoutubImage} alt="YouTube" height={16} width={16} />,
     },
     {
       id: 3,
       name: "LinkedIn",
       url: "https://www.linkedin.com/",
       color: "#0a66c2",
-      icon: <Image src={LinkedinImage} alt="GitHub" height={16} width={16} />,
+      icon: <Image src={LinkedinImage} alt="LinkedIn" height={16} width={16} />,
     },
     {
       id: 4,
       name: "Facebook",
+      url: "https://www.facebook.com/",
+      color: "#1877F2",
+      icon: <Image src={FaceBookImage} alt="Facebook" height={16} width={16} />,
+    },
+    {
+      id: 5,
+      name: "Twitter",
       url: "https://www.x.com/",
       color: "#1877F2",
-      icon: <Image src={FaceBookImage} alt="GitHub" height={16} width={16} />,
+      icon: <Image src={twitterImage} alt="Twitter" height={16} width={16} />,
     },
+    {
+      id: 6,
+      name: "GitLab",
+      url: "https://www.gitlab.com/",
+      color: "#fca326",
+      icon: <Image src={gitLabImage} alt="GitLab" height={16} width={16} />,
+    },
+    {
+      id: 7,
+      name: "Twitch",
+      url: "https://www.twitch.com/",
+      color: "#6441a5",
+      icon: <Image src={twitchImage} alt="Twitch" height={16} width={16} />,
+    }
   ];
   const { code } = useParams();
   const [user, setUser] = useState(null);
