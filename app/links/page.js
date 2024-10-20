@@ -123,7 +123,7 @@ const DraggableItem = ({ link, index, removeLink, updateLink }) => {
         value={link.platform}
         onChange={(value) => updateLink(link.id, "platform", value)}
       >
-        <div className="relative mt-2">
+        <div className="relative mt-2 overflow-visible">
           <ListboxButton className="w-full bg-white border border-gray-300 rounded-lg py-2 px-3 flex items-center justify-between text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-400">
             <span className="flex items-center color-[#737373]">
               {link.platform.icon}
@@ -322,7 +322,7 @@ export default function LinksManager() {
   return (
     <div className="flex bg-[#FAFAFA] flex-col items-center min-h-screen">
       <NavBar />
-      <div className="flex flex-row grow mb-6 gap-6 w-full px-6">
+      <div className="flex flex-row grow mb-6 gap-6 w-full px-6 max-h-screen overflow-y-auto">
         <div className="bg-white flex flex-col items-center  max-h-screen p-3 py-12 rounded-xl w-1/2 max-lg:hidden max-w-[380px]">
           <svg
             xmlns="http://www.w3.org/2000/svg"
