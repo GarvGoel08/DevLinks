@@ -6,9 +6,9 @@ import YoutubImage from "../../images/icon-youtube.svg";
 import FaceBookImage from "../../images/icon-facebook.svg";
 import LinkedinImage from "../../images/icon-linkedin.svg";
 import Image from "next/image";
-import twitterImage from "../images/icon-twitter.svg";
-import gitLabImage from '../images/icon-gitlab.svg';
-import twitchImage from '../images/icon-twitch.svg';
+import twitterImage from "../../images/icon-twitter.svg";
+import gitLabImage from '../../images/icon-gitlab.svg';
+import twitchImage from '../../images/icon-twitch.svg';
 
 const CardPage = () => {
   const platforms = [
