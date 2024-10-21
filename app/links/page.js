@@ -255,7 +255,6 @@ export default function LinksManager() {
   }, [token]);
 
   const [links, setLinks] = useState([
-    { id: crypto.randomUUID(), platform: platforms[0], url: "" },
   ]);
 
   const addLink = () =>
