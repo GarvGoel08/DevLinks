@@ -35,8 +35,8 @@ import FaceBookImage from "../images/icon-facebook.svg";
 import LinkedinImage from "../images/icon-linkedin.svg";
 import twitterImage from "../images/icon-twitter.svg";
 import { useRouter } from "next/navigation";
-import gitLabImage from '../images/icon-gitlab.svg';
-import twitchImage from '../images/icon-twitch.svg';
+import gitLabImage from "../images/icon-gitlab.svg";
+import twitchImage from "../images/icon-twitch.svg";
 
 const platforms = [
   {
@@ -87,7 +87,7 @@ const platforms = [
     url: "https://www.twitch.com/",
     color: "#6441a5",
     icon: <Image src={twitchImage} alt="Twitch" height={16} width={16} />,
-  }
+  },
 ];
 const DraggableItem = ({ link, index, removeLink, updateLink, size }) => {
   const { attributes, listeners, setNodeRef, transform, transition } =
@@ -105,7 +105,11 @@ const DraggableItem = ({ link, index, removeLink, updateLink, size }) => {
       className="p-4 mt-6 bg-gray-50 rounded-lg shadow-sm space-y-4 relative border border-gray-200"
     >
       <div className="flex justify-between items-center">
-        <div className="flex flex-row gap-3 touch-none" {...listeners} {...attributes}>
+        <div
+          className="flex flex-row gap-3 touch-none"
+          {...listeners}
+          {...attributes}
+        >
           <Image src={dragAndDrop} alt="Drag and Drop" width={12} height={12} />
           <span className="text-lg font-medium max-md:text-[14px] text-gray-700">
             Link #{index + 1}
@@ -132,7 +136,11 @@ const DraggableItem = ({ link, index, removeLink, updateLink, size }) => {
             <ChevronDownIcon className="w-5 h-5 text-gray-500" />
           </ListboxButton>
 
-          <ListboxOptions className={`${((index+1)==size)?"":"absolute"} z-10 mt-1 w-full bg-white border border-gray-300 rounded-lg shadow-lg`}>
+          <ListboxOptions
+            className={`${
+              index + 1 == size ? "" : "absolute"
+            } z-10 mt-1 w-full bg-white border border-gray-300 rounded-lg shadow-lg`}
+          >
             {platforms.map((platform) => (
               <ListboxOption
                 key={platform.id}
@@ -164,20 +172,26 @@ const DraggableItem = ({ link, index, removeLink, updateLink, size }) => {
         <span className="absolute inset-y-0 left-3 flex items-center text-gray-500">
           <LinkIcon className="w-5 h-5" />
         </span>
-        <div className={`flex flex-row max-sm:flex-wrap items-center bg-white rounded-xl ${
-              link.error ? "border-red-500 border-2" : ""
-            }`}>
+        <div
+          className={`flex flex-row max-sm:flex-wrap items-center bg-white rounded-xl ${
+            link.error ? "border-red-500 border-2" : ""
+          }`}
+        >
           <input
             type="text"
             placeholder={`e.g. ${link.platform.url}yourprofile`}
             value={link.url}
             onChange={(e) => updateLink(link.id, "url", e.target.value)}
             className={`w-full pl-10 py-2 border rounded-lg focus:outline-none text-gray-700 ${
-              link.error ? "border-none" : "border-gray-300 focus:ring-indigo-400 hover:ring-2 hover:ring-indigo-300  focus:ring-2"
+              link.error
+                ? "border-none"
+                : "border-gray-300 focus:ring-indigo-400 hover:ring-2 hover:ring-indigo-300  focus:ring-2"
             } `}
           />
           {link.error && (
-            <span className="text-red-500 text-sm text-nowrap mr-3 max-sm:hidden">{link.error}</span>
+            <span className="text-red-500 text-sm text-nowrap mr-3 max-sm:hidden">
+              {link.error}
+            </span>
           )}
         </div>
       </div>
@@ -344,7 +358,6 @@ export default function LinksManager() {
             <circle cx="153.5" cy="112" r="48" fill="#EEE" />
             <rect width="160" height="16" x="73.5" y="185" fill="#EEE" rx="8" />
             <rect width="72" height="8" x="117.5" y="214" fill="#EEE" rx="4" />
-
             {[...Array(5)].map((_, index) => {
               const link = links[index]; // Get the link at the current index
               const yPosition = 278 + index * 56; // Calculate y position
@@ -359,9 +372,17 @@ export default function LinksManager() {
                         fill={link.platform.color}
                         rx="8"
                       />
+                      {/* Add GitHub Image before text in this */}
 
-                      <text
+                      <image
+                        href={link.platform.icon.props.src.src}
                         x="12"
+                        y="12"
+                        width="20"
+                        height="20"
+                      />
+                      <text
+                        x="40"
                         y="28"
                         fill="#FFF"
                         fontSize="16"
@@ -440,7 +461,10 @@ export default function LinksManager() {
                   strategy={verticalListSortingStrategy}
                 >
                   {links.length === 0 && (
-                    <div style={{touchAction: 'none'}} className="flex rounded-xl py-8 px-20 max-md:px-8 flex-col bg-[#FAFAFA] items-center justify-center grow mt-6">
+                    <div
+                      style={{ touchAction: "none" }}
+                      className="flex rounded-xl py-8 px-20 max-md:px-8 flex-col bg-[#FAFAFA] items-center justify-center grow mt-6"
+                    >
                       <Image
                         src={imgEpty}
                         alt="No links"
