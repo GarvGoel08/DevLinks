@@ -104,7 +104,7 @@ const DraggableItem = ({ link, index, removeLink, updateLink, size }) => {
       style={style}
       className="p-4 mt-6 bg-gray-50 rounded-lg shadow-sm space-y-4 relative border border-gray-200"
     >
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between items-center touch-none">
         <div className="flex flex-row gap-3" {...listeners} {...attributes}>
           <Image src={dragAndDrop} alt="Drag and Drop" width={12} height={12} />
           <span className="text-lg font-medium max-md:text-[14px] text-gray-700">
@@ -440,7 +440,7 @@ export default function LinksManager() {
                   strategy={verticalListSortingStrategy}
                 >
                   {links.length === 0 && (
-                    <div className="flex rounded-xl py-8 px-20 max-md:px-8 flex-col bg-[#FAFAFA] items-center justify-center grow mt-6">
+                    <div style={{touchAction: 'none'}} className="flex rounded-xl py-8 px-20 max-md:px-8 flex-col bg-[#FAFAFA] items-center justify-center grow mt-6">
                       <Image
                         src={imgEpty}
                         alt="No links"
