@@ -104,8 +104,8 @@ const DraggableItem = ({ link, index, removeLink, updateLink, size }) => {
       style={style}
       className="p-4 mt-6 bg-gray-50 rounded-lg shadow-sm space-y-4 relative border border-gray-200"
     >
-      <div className="flex justify-between items-center touch-none">
-        <div className="flex flex-row gap-3" {...listeners} {...attributes}>
+      <div className="flex justify-between items-center">
+        <div className="flex flex-row gap-3 touch-none" {...listeners} {...attributes}>
           <Image src={dragAndDrop} alt="Drag and Drop" width={12} height={12} />
           <span className="text-lg font-medium max-md:text-[14px] text-gray-700">
             Link #{index + 1}
