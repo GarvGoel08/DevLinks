@@ -89,7 +89,7 @@ const platforms = [
     icon: <Image src={twitchImage} alt="Twitch" height={16} width={16} />,
   }
 ];
-const DraggableItem = ({ link, index, removeLink, updateLink }) => {
+const DraggableItem = ({ link, index, removeLink, updateLink, size }) => {
   const { attributes, listeners, setNodeRef, transform, transition } =
     useSortable({ id: link.id });
 
@@ -132,7 +132,7 @@ const DraggableItem = ({ link, index, removeLink, updateLink }) => {
             <ChevronDownIcon className="w-5 h-5 text-gray-500" />
           </ListboxButton>
 
-          <ListboxOptions className="absolute z-10 mt-1 w-full bg-white border border-gray-300 rounded-lg shadow-lg">
+          <ListboxOptions className={`${((index+1)==size)?"":"absolute"} z-10 mt-1 w-full bg-white border border-gray-300 rounded-lg shadow-lg`}>
             {platforms.map((platform) => (
               <ListboxOption
                 key={platform.id}
@@ -322,7 +322,7 @@ export default function LinksManager() {
   return (
     <div className="flex bg-[#FAFAFA] flex-col items-center min-h-screen">
       <NavBar />
-      <div className="flex flex-row grow mb-6 gap-6 w-full px-6 max-h-screen overflow-y-auto">
+      <div className="flex flex-row grow mb-6 gap-6 w-full px-6 ">
         <div className="bg-white flex flex-col items-center  max-h-screen p-3 py-12 rounded-xl w-1/2 max-lg:hidden max-w-[380px]">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -413,7 +413,7 @@ export default function LinksManager() {
             })}
           </svg>
         </div>
-        <div className="flex-grow rounded-xl bg-white overflow-y-auto">
+        <div className="flex-grow rounded-xl bg-white ">
           <div className="p-8 py-12 flex flex-col justify-between h-full bg-white rounded-lg">
             <div className="flex flex-col grow">
               <h2 className="text-[32px] max-sm:text-[24px] font-semibold text-[#333333]">
@@ -465,6 +465,7 @@ export default function LinksManager() {
                       index={index}
                       removeLink={removeLink}
                       updateLink={updateLink}
+                      size={links.length}
                     />
                   ))}
                 </SortableContext>

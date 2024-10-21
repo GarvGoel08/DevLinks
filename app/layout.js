@@ -29,7 +29,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" style={{overflow: 'visible'}}>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${InstrumentalSans.variable} ${InstrumentalSansItalic.variable} antialiased ` }
       >
