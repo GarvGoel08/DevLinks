@@ -114,8 +114,8 @@ const CardPage = () => {
           alt={`${user.name}'s profile`}
           className="w-24 h-24 rounded-full border border-gray-300 mb-4"
         />
-        <h1 className="text-2xl font-bold text-gray-800">{user.name}</h1>
-        <p className="text-gray-600">{user.about}</p>
+        <h1 className="text-2xl font-bold text-gray-800 text-center">{user.name}</h1>
+        <p className="text-gray-600 text-center">{user.about}</p>
         <h2 className="mt-6 text-gray-600 text-lg font-semibold">Links:</h2>
         <div className="flex flex-col w-full mt-2">
           {links.length > 0 ? (
