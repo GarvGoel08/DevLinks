@@ -413,7 +413,7 @@ export default function LinksManager() {
             })}
           </svg>
         </div>
-        <div className="flex-grow rounded-xl bg-white">
+        <div className="flex-grow rounded-xl bg-white overflow-y-auto">
           <div className="p-8 py-12 flex flex-col justify-between h-full bg-white rounded-lg">
             <div className="flex flex-col grow">
               <h2 className="text-[32px] max-sm:text-[24px] font-semibold text-[#333333]">
